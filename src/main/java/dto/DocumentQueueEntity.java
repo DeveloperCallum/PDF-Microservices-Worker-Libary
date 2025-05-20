@@ -8,21 +8,20 @@ import java.io.Serializable;
 import java.util.*;
 
 public class DocumentQueueEntity implements Serializable {
-    @JsonProperty("job_uuid")
+    @JsonProperty("jobUUID") @Deprecated
     private UUID jobUUID;
 
-    @JsonProperty("page_uuid")
-    private UUID pageUUID;
+    @JsonProperty("documentUUID")
+    private UUID documentUUID;
 
-    @JsonProperty("start_page")
-    private int startPage;
-    @JsonProperty("end_page")
-    private int endPage;
-    @JsonProperty("total_pages")
-    private int totalPages;
+    @JsonProperty("selectionUUID")
+    private UUID selectionUUID;
 
-    @JsonProperty("pdf_document")
+    @JsonProperty("pdfBase64")
     private String pdfBase64Document;
+
+    @JsonProperty("callbackURL")
+    private String callbackURL;
 
     //todo: only send the relevant selections!
     @JsonProperty("selection")
@@ -32,6 +31,7 @@ public class DocumentQueueEntity implements Serializable {
     public DocumentQueueEntity() {
     }
 
+
     public UUID getJobUUID() {
         return jobUUID;
     }
@@ -40,34 +40,9 @@ public class DocumentQueueEntity implements Serializable {
      * Sets the unique value of the job. each job needs its own ID.
      * @param jobUUID
      */
+
     public void setJobUUID(UUID jobUUID) {
         this.jobUUID = jobUUID;
-    }
-
-    @Deprecated
-    public int getStartPage() {
-        return startPage;
-    }
-
-    public void setStartPage(int startPage) {
-        this.startPage = startPage;
-    }
-
-    @Deprecated
-    public int getEndPage() {
-        return endPage;
-    }
-
-    public void setEndPage(int endPage) {
-        this.endPage = endPage;
-    }
-
-    public int getTotalPages() {
-        return totalPages;
-    }
-
-    public void setTotalPages(int totalPages) {
-        this.totalPages = totalPages;
     }
 
     public String getPdfBase64Document() {
@@ -86,15 +61,27 @@ public class DocumentQueueEntity implements Serializable {
         this.selection = selection;
     }
 
-    public UUID getPageUUID() {
-        return pageUUID;
+    public UUID getDocumentUUID() {
+        return documentUUID;
+    }
+
+    public UUID getSelectionUUID() {
+        return selectionUUID;
+    }
+
+    public void setSelectionUUID(UUID selectionUUID) {
+        this.selectionUUID = selectionUUID;
+    }
+
+    public Map<Integer, List<Selection>> getSelection() {
+        return selection;
     }
 
     /**
      * Each page needs an ID so that it can be reference back to where it came from.
-     * @param pageUUID
+     * @param documentUUID
      */
-    public void setPageUUID(UUID pageUUID) {
-        this.pageUUID = pageUUID;
+    public void setDocumentUUID(UUID documentUUID) {
+        this.documentUUID = documentUUID;
     }
 }

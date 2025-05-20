@@ -4,12 +4,12 @@ import java.io.Serializable;
 import java.util.UUID;
 
 public class ResponseEntity<V> implements Serializable {
-    private UUID pageKey;
+    private UUID documentKey;
     private UUID jobKey;
     private V payload;
 
-    public ResponseEntity(UUID pageKey, UUID jobKey, V payload) {
-        this.pageKey = pageKey;
+    public ResponseEntity(UUID documentKey, UUID jobKey, V payload) {
+        this.documentKey = documentKey;
         this.jobKey = jobKey;
         this.payload = payload;
     }
@@ -17,8 +17,8 @@ public class ResponseEntity<V> implements Serializable {
     public ResponseEntity() {
     }
 
-    public UUID getPageKey() {
-        return pageKey;
+    public UUID getDocumentKey() {
+        return documentKey;
     }
 
     public UUID getJobKey() {
@@ -29,8 +29,8 @@ public class ResponseEntity<V> implements Serializable {
         return payload;
     }
 
-    public void setPageKey(UUID pageKey) {
-        this.pageKey = pageKey;
+    public void setDocumentKey(UUID documentKey) {
+        this.documentKey = documentKey;
     }
 
     public void setJobKey(UUID jobKey) {
