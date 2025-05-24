@@ -8,7 +8,7 @@ import java.io.Serializable;
 import java.util.*;
 
 public class DocumentQueueEntity implements Serializable {
-    @JsonProperty("jobUUID") @Deprecated
+    @JsonProperty("jobUUID")
     private UUID jobUUID;
 
     @JsonProperty("documentUUID")
@@ -23,7 +23,9 @@ public class DocumentQueueEntity implements Serializable {
     @JsonProperty("callbackURL")
     private String callbackURL;
 
-    //todo: only send the relevant selections!
+    @JsonProperty("callbackService")
+    private String callbackService;
+
     @JsonProperty("selection")
     private Map<Integer, List<Selection>> selection = new HashMap<>();
 
@@ -35,12 +37,6 @@ public class DocumentQueueEntity implements Serializable {
     public UUID getJobUUID() {
         return jobUUID;
     }
-
-    /**
-     * Sets the unique value of the job. each job needs its own ID.
-     * @param jobUUID
-     */
-
     public void setJobUUID(UUID jobUUID) {
         this.jobUUID = jobUUID;
     }
@@ -69,6 +65,14 @@ public class DocumentQueueEntity implements Serializable {
         return selectionUUID;
     }
 
+    public String getCallbackURL() {
+        return callbackURL;
+    }
+
+    public String getCallbackService() {
+        return callbackService;
+    }
+
     public void setSelectionUUID(UUID selectionUUID) {
         this.selectionUUID = selectionUUID;
     }
@@ -77,10 +81,14 @@ public class DocumentQueueEntity implements Serializable {
         return selection;
     }
 
-    /**
-     * Each page needs an ID so that it can be reference back to where it came from.
-     * @param documentUUID
-     */
+    public void setCallbackURL(String callbackURL) {
+        this.callbackURL = callbackURL;
+    }
+
+    public void setCallbackService(String callbackService) {
+        this.callbackService = callbackService;
+    }
+
     public void setDocumentUUID(UUID documentUUID) {
         this.documentUUID = documentUUID;
     }
