@@ -1,8 +1,9 @@
 package dto;
 
+import java.io.Serializable;
 import java.util.UUID;
 
-public class ImageRequest {
+public class ImageRequest implements Serializable {
     private UUID documentUUID;
     private String Base64Document;
 
