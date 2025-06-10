@@ -1,6 +1,8 @@
-package dto;
+package dto.extraction;
 
 import com.willcocks.callum.model.data.Selection;
+import dto.extraction.Document;
+
 import java.util.*;
 
 public class DocumentQueueEntity {

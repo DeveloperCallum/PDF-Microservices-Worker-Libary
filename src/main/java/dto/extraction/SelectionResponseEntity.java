@@ -1,8 +1,4 @@
-package dto.response;
-
-import dto.DocumentQueueEntity;
-
-import java.util.UUID;
+package dto.extraction;
 
 public class SelectionResponseEntity extends ResponseEntity<DocumentQueueEntity> {
     public SelectionResponseEntity(DocumentQueueEntity payload) {
