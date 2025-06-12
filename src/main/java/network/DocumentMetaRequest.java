@@ -1,18 +1,23 @@
-package dto;
+package network;
 
-import java.io.Serializable;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import dto.WebCallback;
+
 import java.util.UUID;
 
-public class DocumentMetaQueueEntity implements Serializable {
+public class DocumentMetaRequest extends WebCallback {
     private UUID documentUUID;
+
+    @JsonIgnore
     private String base64Document;
 
-    public DocumentMetaQueueEntity(UUID documentUUID, String base64Document) {
+    public DocumentMetaRequest(UUID documentUUID, String base64Document) {
+        super();
         this.documentUUID = documentUUID;
         this.base64Document = base64Document;
     }
 
-    public DocumentMetaQueueEntity() {
+    public DocumentMetaRequest() {
     }
 
     public UUID getDocumentUUID() {

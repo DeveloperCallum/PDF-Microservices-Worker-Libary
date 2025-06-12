@@ -1,4 +1,4 @@
-package dto.extraction;
+package network;
 
 import java.io.Serializable;
 import java.util.UUID;

@@ -1,4 +1,4 @@
-package dto.extraction;
+package dto;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonInclude;
