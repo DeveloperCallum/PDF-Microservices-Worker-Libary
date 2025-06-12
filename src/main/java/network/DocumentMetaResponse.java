@@ -11,6 +11,9 @@ public class DocumentMetaResponse extends WebCallback {
         this.image = image;
     }
 
+    public DocumentMetaResponse() {
+    }
+
     public DocumentMetaResponse(Image image, WebCallback webCallback) {
         super(webCallback);
         this.image = image;

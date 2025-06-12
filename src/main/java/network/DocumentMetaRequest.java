@@ -8,7 +8,6 @@ import java.util.UUID;
 public class DocumentMetaRequest extends WebCallback {
     private UUID documentUUID;
 
-    @JsonIgnore
     private String base64Document;
 
     public DocumentMetaRequest(UUID documentUUID, String base64Document) {
