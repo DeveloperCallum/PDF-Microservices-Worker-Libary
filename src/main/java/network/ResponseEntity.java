@@ -1,8 +1,9 @@
-package dto.response;
+package network;
 
 import java.io.Serializable;
 import java.util.UUID;
 
+//TODO: Remove this, this is unnecessary.
 public class ResponseEntity<V> implements Serializable {
     private UUID documentKey;
     private UUID jobKey;

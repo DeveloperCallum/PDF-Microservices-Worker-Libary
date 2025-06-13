@@ -2,7 +2,9 @@ package dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class WebCallback {
+import java.io.Serializable;
+
+public class WebCallback implements Serializable {
     @JsonProperty("callbackURL")
     private String callbackURL;
 
@@ -12,6 +14,14 @@ public class WebCallback {
     public WebCallback(String callbackURL, String callbackService) {
         this.callbackURL = callbackURL;
         this.callbackService = callbackService;
+    }
+
+    public WebCallback(WebCallback webCallback) {
+        this.callbackService = webCallback.callbackService;
+        this.callbackURL = webCallback.callbackURL;
+    }
+
+    public WebCallback() {
     }
 
     public String getCallbackURL() {
