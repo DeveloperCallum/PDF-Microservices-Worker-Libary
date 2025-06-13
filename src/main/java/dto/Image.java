@@ -1,11 +1,15 @@
 package dto;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 public class Image {
     private float height;
     private float width;
     private int numberOfPages;
 
     //Images are in base64 format, and need decoding.
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String[] images;
 
     public Image(float height, float width, int numberOfPages) {
@@ -21,6 +25,7 @@ public class Image {
         this.images = images;
     }
 
+    @JsonCreator
     public Image() {
     }
 
