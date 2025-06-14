@@ -1,4 +1,4 @@
-package network;
+package network.queue.response;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import dto.Image;
@@ -6,17 +6,17 @@ import dto.WebCallback;
 
 import java.util.UUID;
 
-public class DocumentMetaResponse extends WebCallback {
+public class DocumentMetaQueueResponse extends WebCallback {
     private Image image;
     private UUID documentUUID;
 
-    public DocumentMetaResponse(UUID documentUUID, Image image, String callbackURL, String callbackService) {
+    public DocumentMetaQueueResponse(UUID documentUUID, Image image, String callbackURL, String callbackService) {
         super(callbackURL, callbackService);
         this.image = image;
         this.documentUUID = documentUUID;
     }
 
-    public DocumentMetaResponse(UUID documentUUID, Image image, WebCallback webCallback) {
+    public DocumentMetaQueueResponse(UUID documentUUID, Image image, WebCallback webCallback) {
         super(webCallback);
         this.image = image;
         this.documentUUID = documentUUID;
@@ -25,7 +25,7 @@ public class DocumentMetaResponse extends WebCallback {
     //Default constructor for jackson
 
     @JsonCreator
-    public DocumentMetaResponse() {
+    public DocumentMetaQueueResponse() {
     }
 
     public Image getImage() {

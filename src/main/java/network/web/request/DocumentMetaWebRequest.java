@@ -1,22 +1,21 @@
-package network;
+package network.web.request;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import dto.WebCallback;
 
 import java.util.UUID;
 
-public class DocumentMetaRequest extends WebCallback {
+public class DocumentMetaWebRequest extends WebCallback {
     private UUID documentUUID;
 
     private String base64Document;
 
-    public DocumentMetaRequest(UUID documentUUID, String base64Document) {
+    public DocumentMetaWebRequest(UUID documentUUID, String base64Document) {
         super();
         this.documentUUID = documentUUID;
         this.base64Document = base64Document;
     }
 
-    public DocumentMetaRequest() {
+    public DocumentMetaWebRequest() {
     }
 
     public UUID getDocumentUUID() {
