@@ -4,16 +4,17 @@ import network.queue.request.ImageQueueRequest;
 import network.web.request.ImagesWebRequest;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class ImageQueueResponse implements Serializable {
     private ImageQueueRequest imageQueueRequest;
-    private String[] imageEncodedArr;
+    private List<String> imageEncodedArr;
 
     public ImageQueueResponse(ImageQueueRequest imageQueueRequest) {
         this.imageQueueRequest = imageQueueRequest;
     }
 
-    public ImageQueueResponse(ImageQueueRequest imageQueueRequest, String[] imageEncodedArr) {
+    public ImageQueueResponse(ImageQueueRequest imageQueueRequest, List<String> imageEncodedArr) {
         this.imageQueueRequest = imageQueueRequest;
         this.imageEncodedArr = imageEncodedArr;
     }
@@ -29,11 +30,11 @@ public class ImageQueueResponse implements Serializable {
         this.imageQueueRequest = imageQueueRequest;
     }
 
-    public String[] getImageEncodedArr() {
+    public List<String> getImageEncodedArr() {
         return imageEncodedArr;
     }
 
-    public void setImageEncodedArr(String[] imageEncodedArr) {
+    public void setImageEncodedArr(List<String> imageEncodedArr) {
         this.imageEncodedArr = imageEncodedArr;
     }
 }

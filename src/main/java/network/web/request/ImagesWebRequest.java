@@ -6,7 +6,7 @@ import java.util.UUID;
 /**
  * An object that stores the request incoming from the web controller.
  */
-public class ImagesWebRequest extends WebCallback {
+public class ImagesWebRequest {
     private UUID documentUUID;
     private String base64Document;
 
@@ -14,7 +14,6 @@ public class ImagesWebRequest extends WebCallback {
     }
 
     public ImagesWebRequest(ImagesWebRequest imagesWebRequest){
-        super(imagesWebRequest);
         this.documentUUID = imagesWebRequest.documentUUID;
         this.base64Document = imagesWebRequest.base64Document;
     }

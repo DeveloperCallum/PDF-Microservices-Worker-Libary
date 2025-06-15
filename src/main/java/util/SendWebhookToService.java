@@ -1,12 +1,14 @@
-package util.util;
+package util;
 
 import com.willcocks.callum.eukrea.ServiceResolver;
+import org.slf4j.LoggerFactory;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
-import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
-import org.springframework.web.client.RestClient;
+import org.springframework.web.reactive.function.client.WebClient;
+import reactor.core.publisher.Mono;
+
 import java.io.Serializable;
 import java.util.function.Consumer;
 
@@ -43,17 +45,10 @@ public class SendWebhookToService<V> implements Consumer<V>, Serializable {
 
         System.out.println("URL: " + serviceInstance.getUri() + "/" + callbackURL); //TODO: SEND REQUEST TO URL!
 
-        RestClient customClient = RestClient.builder().requestFactory(new HttpComponentsClientHttpRequestFactory()).baseUrl(serviceInstance.getUri()).build();
-
-        ResponseEntity<Void> response = customClient.method(HttpMethod.POST).uri(callbackURL).body(t).retrieve().toBodilessEntity();
-
-        System.out.println("Status Code: " + response.getStatusCode());
-
-        int statusCode = response.getStatusCode().value();
-        if (statusCode < 200 || statusCode >= 300 ) {
-            System.out.println("Issue sending callback!");
-            //TODO? Event?
-            throw new IllegalStateException("sent HTTP request to server, server responded with an error.");
-        }
+        WebClient webClient = WebClient.builder().baseUrl(serviceInstance.getUri().toString()).build();
+        Mono<ResponseEntity<Void>> response = webClient.method(HttpMethod.POST).uri(callbackURL).bodyValue(t).retrieve().toBodilessEntity();
+        response.subscribe(null, throwable -> {
+            LoggerFactory.getLogger(SendWebhookToService.class).error("sent HTTP request to server, server responded with an error.");
+        });
     }
 }

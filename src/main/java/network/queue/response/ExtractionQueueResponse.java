@@ -8,13 +8,13 @@ import java.util.UUID;
 //TODO: remove extends.
 public class ExtractionQueueResponse {
     private UUID documentUUID;
-    private UUID jobKey;
+    private UUID jobUUID;
     private UUID responseManagerUUID;
     private ExtractionQueueRequest payload;
 
     public ExtractionQueueResponse(ExtractionQueueRequest payload) {
         this.documentUUID = payload.getDocument().getDocumentUUID();
-        this.jobKey = payload.getJobUUID();
+        this.jobUUID = payload.getJobUUID();
         this.payload = payload;
         this.responseManagerUUID = payload.getResponseManagerUUID();
     }
@@ -28,8 +28,8 @@ public class ExtractionQueueResponse {
         return documentUUID;
     }
 
-    public UUID getJobKey() {
-        return jobKey;
+    public UUID getJobUUID() {
+        return jobUUID;
     }
     public ExtractionQueueRequest getPayload() {
         return payload;

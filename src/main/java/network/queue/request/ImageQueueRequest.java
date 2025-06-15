@@ -1,12 +1,16 @@
 package network.queue.request;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import dto.Image;
 import network.web.request.ImagesWebRequest;
 
 import java.util.UUID;
 
 public class ImageQueueRequest {
     private ImagesWebRequest payload;
+
+    //TODO: Separate this, make imageMeta its own object that gets used in Image.
+    private Image imageMetaData;
     private UUID responseManagerUUID;
     private UUID jobUUID = UUID.randomUUID();
     private int start;
@@ -59,5 +63,13 @@ public class ImageQueueRequest {
 
     public UUID getJobUUID() {
         return jobUUID;
+    }
+
+    public Image getImageMetaData() {
+        return imageMetaData;
+    }
+
+    public void setImageMetaData(Image imageMetaData) {
+        this.imageMetaData = imageMetaData;
     }
 }
