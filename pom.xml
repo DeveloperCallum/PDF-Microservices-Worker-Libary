@@ -23,6 +23,11 @@
             <scope>compile</scope>
         </dependency>
         <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-webflux</artifactId>
+            <version>3.3.2</version>
+        </dependency>
+        <dependency>
             <groupId>com.willcocks.callum</groupId>
             <artifactId>PDFMicroserviceLib</artifactId>
             <version>1</version>

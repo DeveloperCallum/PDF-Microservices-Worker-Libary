@@ -3,7 +3,7 @@ package dto;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.willcocks.callum.model.data.Selection;
+import dto.Selection;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -19,6 +19,7 @@ public class Document implements Serializable {
     @JsonProperty("pdfBase64")
     private String pdfBase64Document;
 
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("selection")
     private Map<Integer, List<Selection>> selectionMap = new HashMap<>();
 
